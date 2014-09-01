@@ -50,7 +50,7 @@ var calculateTime = function()
 	var times = "";
 	for(var time_index = 0; time_index < time.length - 1; time_index++)
 	{
-		times += "It took " + (time[time_index + 1] - time[time_index]) /1000 + " seconds to answer question " + (time_index + 1) + " .<br />";
+		times += "It took " + (time[time_index + 1] - time[time_index]) /1000 + " seconds to answer question " + (time_index + 1) + ".<br />";
 	}
 	$('#times').html(times);
 	$('#total-time').html('It took you ' + ((time[time.length - 1]) - time[0]) /1000 + ' seconds to finish the quiz.');
