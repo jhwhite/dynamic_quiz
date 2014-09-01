@@ -77,7 +77,7 @@ function that will show the correct answers for all questions
 */
 var showAnswers = function()
 {
-	correct_answers = "";
+	var correct_answers = "";
 	for(var iterator = 0; iterator < allQuestions.length; iterator++)
 	{
 		correct_answers += '<h4>' + allQuestions[iterator].question + '</h4>';
