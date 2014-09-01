@@ -1,0 +1,9 @@
+.col-md-12 {
+	background-color: orange;
+	padding-bottom: 2em;
+	margin-top: 10em;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: 1em solid #707070;
+}
