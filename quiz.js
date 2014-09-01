@@ -65,9 +65,25 @@ var startOver = function()
 	$('#score').html("");
 	$('#times').html("");
 	$('#total-time').html('');
+	$('div#correct-answers').hide('');
 	$('button#button-reset').hide();
 	$('button#next').show();
+	$('button#show-correct-answers').hide();
 	displayQuestion();
+}
+
+/*
+function that will show the correct answers for all questions
+*/
+var showAnswers = function()
+{
+	correct_answers = "";
+	for(var iterator = 0; iterator < allQuestions.length; iterator++)
+	{
+		correct_answers += '<h4>' + allQuestions[iterator].question + '</h4>';
+		correct_answers += '<p>' + allQuestions[iterator].choices[allQuestions[iterator].correctAnswer] + '</p>';
+	}
+	$('div#correct-answers').html(correct_answers);
 }
 
 /*
@@ -104,9 +120,11 @@ function that will place the results of the test on the screen
 */
 var showResult = function()
 {
+	showAnswers();
 	$('h3').text('Your results are...');
 	$('button#next').hide();
 	$('button#button-reset').show();
+	$('button#show-correct-answers').show();
 	var results ="";
 	var num_correct = 0;
 
@@ -130,6 +148,10 @@ var showResult = function()
 	$('#button-reset').click(function(){
 		startOver();
 	});
+
+	$('button#show-correct-answers').click(function(){
+		$('div#correct-answers').slideDown('slow');
+	})
 }
 
 /*
@@ -141,6 +163,8 @@ $(document).ready(function(){
 		question_index++;
 		displayQuestion();
 	});
+	$('div#correct-answers').hide();
 	$('button#button-reset').hide();
+	$('button#show-correct-answers').hide();
 	displayQuestion();
 });
