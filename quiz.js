@@ -53,6 +53,7 @@ var calculateTime = function()
 		times += "It took " + (time[time_index + 1] - time[time_index]) /1000 + " seconds to answer question " + (time_index + 1) + " .<br />";
 	}
 	$('#times').html(times);
+	$('#total-time').html('It took you ' + ((time[time.length - 1]) - time[0]) /1000 + ' seconds to finish the quiz.');
 }
 
 var startOver = function()
@@ -74,7 +75,6 @@ otherwise moves on to show the results by calling the showResults function
 */
 var displayQuestion = function()
 {
-	console.log(question_index);
 	var options = "";
 	if(question_index < allQuestions.length){
 		trackTime();
