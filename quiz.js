@@ -42,7 +42,7 @@ var trackTime = function()
 }
 
 /* 
-function that caluclates the time on each question by subtracing the next array item from the previous array item
+function that caluclates the time on each question by subtracting the next array item from the previous array item
 it then places the times for each question into the dom
 */
 var calculateTime = function()
@@ -106,9 +106,9 @@ var showResult = function()
 		{
 			results += "You got Question " + (i + 1) + " incorrect!<br />";
 		}
-		$('#results').html(results);
-		$('#score').html("You got " + num_correct + " questions correct!<br /> Your score is " + ((num_correct/allQuestions.length) * 100) + ".");
 	}
+	$('#results').html(results);
+	$('#score').html("You got " + num_correct + " questions correct!<br /> Your score is " + ((num_correct/allQuestions.length) * 100) + ".");
 	calculateTime();
 }
 
