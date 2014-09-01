@@ -114,12 +114,12 @@ var showResult = function()
 	{
 		if(test_taker_answers[i] == allQuestions[i].correctAnswer)
 		{
-			results += "You got Question " + (i + 1) + " correct!<br />";
+			results += "<p class='correct'>You got Question " + (i + 1) + " correct!</p>";
 			num_correct++;
 		}
 		else
 		{
-			results += "You got Question " + (i + 1) + " incorrect!<br />";
+			results += "<p class='incorrect'>You got Question " + (i + 1) + " incorrect!</p>";
 		}
 	}
 	$('#results').html(results);
