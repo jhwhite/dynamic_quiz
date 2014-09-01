@@ -150,7 +150,7 @@ var showResult = function()
 	});
 
 	$('button#show-correct-answers').click(function(){
-		$('div#correct-answers').slideDown('slow');
+		$('div#correct-answers').slideToggle('slow');
 	})
 }
 
