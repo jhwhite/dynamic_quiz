@@ -113,7 +113,7 @@ var showResult = function()
 }
 
 /*
-iniatilizes everything when the page loads
+initializes everything when the page loads
 */
 $(document).ready(function(){
 	$('button').click(function() {
