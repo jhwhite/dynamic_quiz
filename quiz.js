@@ -104,7 +104,7 @@ function that will place the results of the test on the screen
 */
 var showResult = function()
 {
-	$('h3').text('Your results are!');
+	$('h3').text('Your results are...');
 	$('button#next').hide();
 	$('button#button-reset').show();
 	var results ="";
