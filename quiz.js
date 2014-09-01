@@ -1,3 +1,6 @@
+/*
+var allQuestions is the object that holds each question, possible answers in an array, and the index of the correct answer
+*/
 var allQuestions = [
 	{
 		question: "Who is Prime Minister of the United Kingdom?", 
@@ -26,13 +29,42 @@ var allQuestions = [
 	}
 ];
 
-var question_index = 0;
-var test_taker_answers = [];
+var question_index = 0; //keeps track of which question is being asked to appear on screen
+var test_taker_answers = []; //array that will hold the answer of the test taker
+var time = []; //array that holds the time in milliseconds
 
+/*
+function that adds the current time in milliseconds to the time array
+*/
+var trackTime = function()
+{
+	time.push($.now());
+}
+
+/* 
+function that caluclates the time on each question by subtracing the next array item from the previous array item
+it then places the times for each question into the dom
+*/
+var calculateTime = function()
+{
+	var times = "";
+	for(var time_index = 0; time_index < time.length - 1; time_index++)
+	{
+		times += "It took " + (time[time_index + 1] - time[time_index]) /1000 + " seconds to answer question " + (time_index + 1) + " .<br />";
+	}
+	$('#times').html(times);
+}
+
+/*
+function to display the questions if there's more questions left
+otherwise moves on to show the results by calling the showResults function
+*/
 var displayQuestion = function()
 {
+
 	var options = "";
 	if(question_index < allQuestions.length){
+		trackTime();
 
 		$('h3').text(allQuestions[question_index].question);
 		for(var count = 0; count < allQuestions[question_index].choices.length; count++)
@@ -48,10 +80,14 @@ var displayQuestion = function()
 	}
 
 	else {
+		trackTime();
 		showResult()
 	}
 }
 
+/*
+function that will place the results of the test on the screen
+*/
 var showResult = function()
 {
 	$('h3').text('Your results are!');
@@ -63,15 +99,22 @@ var showResult = function()
 	{
 		if(test_taker_answers[i] == allQuestions[i].correctAnswer)
 		{
-			//console.log("You got one correct!");
 			results += "You got Question " + (i + 1) + " correct!<br />";
 			num_correct++;
+		}
+		else
+		{
+			results += "You got Question " + (i + 1) + " incorrect!<br />";
 		}
 		$('#results').html(results);
 		$('#score').html("You got " + num_correct + " questions correct!<br /> Your score is " + ((num_correct/allQuestions.length) * 100) + ".");
 	}
+	calculateTime();
 }
 
+/*
+iniatilizes everything when the page loads
+*/
 $(document).ready(function(){
 	$('button').click(function() {
 		$('#answers').text('');
