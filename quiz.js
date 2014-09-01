@@ -41,7 +41,7 @@ var trackTime = function()
 	time.push($.now());
 }
 
-/* 
+/*
 function that caluclates the time on each question by subtracting the next array item from the previous array item
 it then places the times for each question into the dom
 */
@@ -64,6 +64,7 @@ var startOver = function()
 	$('#results').html("");
 	$('#score').html("");
 	$('#times').html("");
+	$('#total-time').html('');
 	$('button#button-reset').hide();
 	$('button#next').show();
 	displayQuestion();
