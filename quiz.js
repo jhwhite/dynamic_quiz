@@ -55,13 +55,26 @@ var calculateTime = function()
 	$('#times').html(times);
 }
 
+var startOver = function()
+{
+	question_index = 0;
+	test_taker_answers = [];
+	time = [];
+	$('#results').html("");
+	$('#score').html("");
+	$('#times').html("");
+	$('button#button-reset').hide();
+	$('button#next').show();
+	displayQuestion();
+}
+
 /*
 function to display the questions if there's more questions left
 otherwise moves on to show the results by calling the showResults function
 */
 var displayQuestion = function()
 {
-
+	console.log(question_index);
 	var options = "";
 	if(question_index < allQuestions.length){
 		trackTime();
@@ -91,7 +104,8 @@ function that will place the results of the test on the screen
 var showResult = function()
 {
 	$('h3').text('Your results are!');
-	$('button').hide();
+	$('button#next').hide();
+	$('button#button-reset').show();
 	var results ="";
 	var num_correct = 0;
 
@@ -109,18 +123,23 @@ var showResult = function()
 	}
 	$('#results').html(results);
 	$('#score').html("You got " + num_correct + " questions correct!<br /> Your score is " + ((num_correct/allQuestions.length) * 100) + ".");
+
 	calculateTime();
+
+	$('#button-reset').click(function(){
+		startOver();
+	});
 }
 
 /*
 initializes everything when the page loads
 */
 $(document).ready(function(){
-	$('button').click(function() {
+	$('button#next').click(function() {
 		$('#answers').text('');
 		question_index++;
 		displayQuestion();
 	});
-
+	$('button#button-reset').hide();
 	displayQuestion();
 });
