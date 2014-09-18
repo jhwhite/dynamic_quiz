@@ -149,9 +149,7 @@ var showResult = function()
 		startOver();
 	});
 
-	$('button#show-correct-answers').click(function(){
-		$('div#correct-answers').slideToggle('slow');
-	})
+
 }
 
 /*
@@ -167,4 +165,8 @@ $(document).ready(function(){
 	$('button#button-reset').hide();
 	$('button#show-correct-answers').hide();
 	displayQuestion();
+
+	$('button#show-correct-answers').click(function(){
+		$('div#correct-answers').slideToggle('slow');
+	});
 });
